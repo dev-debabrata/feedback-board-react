@@ -25,17 +25,23 @@ export function Opinion({ opinion: { id, title, body, userName, votes } }) {
   const [downvoteFormState, downvoteFormAction, downvotePending] =
     useActionState(downvoteAction);
 
+  const voteButtonClass = (disabled) =>
+    `p-0 bg-transparent border-0 cursor-pointer ${disabled ? 'text-[#c2af93] cursor-not-allowed' : 'text-[#a38152] hover:text-[#fd9217]'
+    }`;
+
   return (
-    <article>
+    <article className="mb-4">
       <header>
-        <h3>{title}</h3>
-        <p>Shared by {userName}</p>
+        <h3 className='font-rubik m-0 text-xl'>{title}</h3>
+        <p className='m-0 text-[#938c83] text-sm'>Shared by {userName}</p>
       </header>
-      <p>{body}</p>
-      <form className="votes">
+      <p className="mt-2 text-base">{body}</p>
+      <form className="flex gap-2 items-center mt-3">
         <button
           formAction={upvoteFormAction}
           disabled={upvotePending || downvotePending}
+          className={voteButtonClass(upvotePending || downvotePending)}
+          aria-label="upvote"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -47,6 +53,7 @@ export function Opinion({ opinion: { id, title, body, userName, votes } }) {
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
+            className="inline-block"
           >
             <rect width="18" height="18" x="3" y="3" rx="2" />
             <path d="m16 12-4-4-4 4" />
@@ -54,11 +61,13 @@ export function Opinion({ opinion: { id, title, body, userName, votes } }) {
           </svg>
         </button>
 
-        <span>{optimisticVotes}</span>
+        <span className="inline-block text-base text-[#f97706] font-bold">{optimisticVotes}</span>
 
         <button
           formAction={downvoteFormAction}
           disabled={upvotePending || downvotePending}
+          className={voteButtonClass(upvotePending || downvotePending)}
+          aria-label="upvote"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -70,6 +79,7 @@ export function Opinion({ opinion: { id, title, body, userName, votes } }) {
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
+            className="inline-block"
           >
             <rect width="18" height="18" x="3" y="3" rx="2" />
             <path d="M12 8v8" />

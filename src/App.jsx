@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <Header />
-      <main>
+      <main className='max-w-[800px] mx-auto my-12 p-8 border-l border-r border-[#353331]'>
         <OpinionsContextProvider>
           <NewOpinion />
           <Opinions />

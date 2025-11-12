@@ -45,37 +45,40 @@ export function NewOpinion() {
   });
 
   return (
-    <div id="new-opinion">
-      <h2>Share your opinion!</h2>
+    <div className='bg-[#2e2923] text-[#f9f7f3] p-8 rounded-lg shadow-[0_0_16px_1px_rgba(0,0,0,0.5)]'>
+      <h2 className='text-[#fcc586] m-0'>Share your opinion!</h2>
       <form action={formAction}>
-        <div className="control-row">
-          <p className="control">
-            <label htmlFor="userName">Your Name</label>
+        <div className="flex gap-4">
+          <p className=" flex-1">
+            <label htmlFor="userName" className='block mb-1 font-rubik text-sm font-bold text-[#d2cdc6]'>Your Name</label>
             <input
               type="text"
               id="userName"
               name="userName"
               defaultValue={formState.enteredValues?.userName}
+              className='block w-full p-2 rounded border border-[#353331] bg-[#f9f7f3] text-[#353331] font-rubik'
             />
           </p>
 
           <p className="control">
-            <label htmlFor="title">Title</label>
+            <label htmlFor="title" className='block mb-1 font-rubik text-sm font-bold text-[#d2cdc6]'>Title</label>
             <input
               type="text"
               id="title"
               name="title"
               defaultValue={formState.enteredValues?.title}
+              className='block w-full p-2 rounded border border-[#353331] bg-[#f9f7f3] text-[#353331] font-rubik'
             />
           </p>
         </div>
         <p className="control">
-          <label htmlFor="body">Your Opinion</label>
+          <label htmlFor="body" className='block mb-1 font-rubik text-sm font-bold text-[#d2cdc6]'>Your Opinion</label>
           <textarea
             id="body"
             name="body"
             rows={5}
             defaultValue={formState.enteredValues?.body}
+            className='block w-full p-2 rounded border border-[#353331] bg-[#f9f7f3] text-[#353331] font-rubik'
           ></textarea>
         </p>
 
