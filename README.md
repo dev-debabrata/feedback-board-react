@@ -4,6 +4,12 @@ A simple Feedback Board web app built with **React** and **Tailwind CSS**. The a
 
 ---
 
+## 📸 Screenshots
+
+![](./public/feedback-board.png)
+
+---
+
 ## Features
 
 - Create, read, and vote on feedback/opinions.
