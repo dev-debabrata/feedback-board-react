@@ -2,9 +2,9 @@ import { createContext, useEffect, useState } from 'react';
 
 export const OpinionsContext = createContext({
   opinions: null,
-  addOpinion: (opinion) => {},
-  upvoteOpinion: (id) => {},
-  downvoteOpinion: (id) => {},
+  addOpinion: (opinion) => { },
+  upvoteOpinion: (id) => { },
+  downvoteOpinion: (id) => { },
 });
 
 export function OpinionsContextProvider({ children }) {
@@ -12,7 +12,7 @@ export function OpinionsContextProvider({ children }) {
 
   useEffect(() => {
     async function loadOpinions() {
-      const response = await fetch('http://localhost:3000/opinions');
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/opinions`);
       const opinions = await response.json();
       setOpinions(opinions);
     }
@@ -21,7 +21,7 @@ export function OpinionsContextProvider({ children }) {
   }, []);
 
   async function addOpinion(enteredOpinionData) {
-    const response = await fetch('http://localhost:3000/opinions', {
+    const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/opinions`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -39,7 +39,7 @@ export function OpinionsContextProvider({ children }) {
 
   async function upvoteOpinion(id) {
     const response = await fetch(
-      'http://localhost:3000/opinions/' + id + '/upvote',
+      `${import.meta.env.VITE_BACKEND_URL}/opinions` + id + '/upvote',
       {
         method: 'POST',
       }
@@ -61,7 +61,7 @@ export function OpinionsContextProvider({ children }) {
 
   async function downvoteOpinion(id) {
     const response = await fetch(
-      'http://localhost:3000/opinions/' + id + '/downvote',
+      `${import.meta.env.VITE_BACKEND_URL}/opinions` + id + '/downvote',
       {
         method: 'POST',
       }
